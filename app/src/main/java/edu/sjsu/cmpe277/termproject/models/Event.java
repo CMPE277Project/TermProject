@@ -1,7 +1,7 @@
 package edu.sjsu.cmpe277.termproject.models;
 
 import java.text.SimpleDateFormat;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by emy on 11/22/15.
@@ -44,8 +44,8 @@ public class Event {
     }
 
     public void setStartTime(Date date) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        this.startTime = simpleDateFormat.format(date);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        this.startTime =simpleDateFormat.format(date);
     }
 
     public String getEndTime() {
@@ -53,7 +53,7 @@ public class Event {
     }
 
     public void setEndTime(Date date) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
         this.endTime = simpleDateFormat.format(date);
     }
 }

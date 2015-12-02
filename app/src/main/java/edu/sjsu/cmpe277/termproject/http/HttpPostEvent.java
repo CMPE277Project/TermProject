@@ -41,7 +41,7 @@ public class HttpPostEvent extends AsyncTask<Event, Void, String> {
             jsonObject.put("description", event.getDescription());
             jsonObject.put("", event.getStartTime());
             jsonObject.put("", event.getEndTime());
-            jsonObject.put("", event.getUser().getUserId());
+            //jsonObject.put("", event.getUser().getUserId());
 
             dataOutputStream = new DataOutputStream(httpURLConnection.getOutputStream());
             dataOutputStream.writeBytes(jsonObject.toString());

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -23,6 +24,7 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.facebook.login.widget.ProfilePictureView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,12 +43,12 @@ import edu.sjsu.cmpe277.termproject.secondActivity;
  */
 public class Tab1 extends Fragment /*implements View.OnClickListener*/{
 
-    private LoginButton loginButton;
-    private CallbackManager callbackManager;
-    private User user;
-    private AccessTokenTracker accessTokenTracker;
-    private ProfileTracker profileTracker;
-    private Communicator communicator;
+//    private LoginButton loginButton;
+//    private CallbackManager callbackManager;
+//    private User user;
+//    private AccessTokenTracker accessTokenTracker;
+//    private ProfileTracker profileTracker;
+//    private Communicator communicator;
 
   /*  private FacebookCallback<LoginResult> loginResultFacebookCallback = new FacebookCallback<LoginResult>() {
         @Override
@@ -98,6 +100,9 @@ public class Tab1 extends Fragment /*implements View.OnClickListener*/{
         }
 
     };*/
+
+    private ProfilePictureView profilePictureView;
+    private TextView textView;
 
     public Tab1() {}
 
@@ -194,15 +199,24 @@ public class Tab1 extends Fragment /*implements View.OnClickListener*/{
         //facebookSetup();
     }*/
 
-   /* @Override
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loginButton = (LoginButton)view.findViewById(R.id.login_button);
-        loginButton.setReadPermissions(Arrays.asList("public_profile"));
-        loginButton.setFragment(this);
-        loginButton.registerCallback(callbackManager, loginResultFacebookCallback);
-        //facebookSetup(view);
-    }*/
+//        loginButton = (LoginButton)view.findViewById(R.id.login_button);
+//        loginButton.setReadPermissions(Arrays.asList("public_profile"));
+//        loginButton.setFragment(this);
+//        loginButton.registerCallback(callbackManager, loginResultFacebookCallback);
+//        facebookSetup(view);
+        String firstName = getActivity().getIntent().getStringExtra("firstName");
+        String lastName = getActivity().getIntent().getStringExtra("lastName");
+        String imageId = getActivity().getIntent().getStringExtra("imageId");
+        textView = (TextView)view.findViewById(R.id.textName);
+        profilePictureView = (ProfilePictureView)view.findViewById(R.id.profilePic);
+
+        textView.setText(firstName+" "+lastName);
+        profilePictureView.setProfileId(imageId);
+
+    }
 
 
    /* @Override

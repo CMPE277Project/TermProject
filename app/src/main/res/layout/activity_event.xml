@@ -1,16 +1,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="edu.sjsu.cmpe277.termproject.EventActivity">
 
     <include
         android:id="@+id/eventToolBar"
         layout="@layout/toolbar" />
 
-    <TextView android:text="@string/textViewTitle" android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_below="@id/eventToolBar"
+        android:text="Submit"
+        android:layout_alignParentRight="true"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventToolBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <TextView android:text="@string/textViewTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/titleEvent"
-        android:layout_below="@id/eventToolBar"
+        android:layout_below="@id/submitButton"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         />
@@ -34,6 +55,7 @@
         android:text="Description"/>
 
     <EditText
+        android:id="@+id/editDescriptionEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/descriptionEvent"
@@ -46,31 +68,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/descriptionEvent"
-        android:layout_marginTop="80dp"
         android:layout_marginLeft="18dp"
         android:text="StartDate"/>
 
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/endDateEvent"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="22dp"
-        android:text="EndDate"
-        android:layout_below="@id/startDateEvent" />
+        android:id="@+id/startDateButton"
+        android:text="Start Date"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:text="Submit"
-        android:layout_marginBottom="50dp"/>
+        android:id="@+id/StartTimeButton"
+        android:text="Start Time"
+        android:onClick="showTimePicker"/>
+
+   <Button
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/EndDateButton"
+       android:text="End Date"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
 
 
 </RelativeLayout>

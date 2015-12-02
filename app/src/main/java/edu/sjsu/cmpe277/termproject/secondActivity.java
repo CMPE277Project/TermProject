@@ -171,6 +171,15 @@ public class secondActivity extends AppCompatActivity {
         });
         slidingTabLayout.setViewPager(viewPager);
 
+
+        Tab1 tab1 = new Tab1();
+        Bundle bundle = new Bundle();
+        bundle.putString("firstName", getIntent().getExtras().getString("firstName"));
+        bundle.putString("lastName", getIntent().getExtras().getString("lastName"));
+        bundle.putString("imageId", getIntent().getExtras().getString("imageId"));
+        tab1.setArguments(bundle);
+
+
     }
 
     @Override

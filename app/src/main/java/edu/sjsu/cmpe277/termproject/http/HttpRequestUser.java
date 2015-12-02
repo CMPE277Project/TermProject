@@ -96,6 +96,7 @@ public class HttpRequestUser extends AsyncTask<User, Void, String> {
                 e.printStackTrace();
             }
         }
+        System.out.println(stringBuilder.toString());
         return stringBuilder.toString();
     }
 }

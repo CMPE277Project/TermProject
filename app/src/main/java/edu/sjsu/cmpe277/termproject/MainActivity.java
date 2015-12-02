@@ -31,6 +31,7 @@ import java.util.Arrays;
 import edu.sjsu.cmpe277.termproject.Fragments.Tab1;
 import edu.sjsu.cmpe277.termproject.Fragments.ViewPageAdapter;
 import edu.sjsu.cmpe277.termproject.Fragments.profileFragment;
+import edu.sjsu.cmpe277.termproject.http.HttpRequestUser;
 import edu.sjsu.cmpe277.termproject.http.PostUserInfo;
 import edu.sjsu.cmpe277.termproject.interfaces.Communicator;
 import edu.sjsu.cmpe277.termproject.models.User;
@@ -159,11 +160,13 @@ public class MainActivity extends AppCompatActivity /*implements Communicator*/ 
                             user.setLastName(jsonObject.getString("last_name"));
                             user.setImageFile(jsonObject.getString("id"));
 
+                           new HttpRequestUser().execute(user);
+
 //                            user.setImageFile(jsonObject.getString("picture"));
                            intent = new Intent(MainActivity.this, secondActivity.class);
                intent.putExtra("firstName", user.getFirstName());
                intent.putExtra("lastName", user.getLastName());
-               intent.putExtra("Id", user.getUserId());
+               intent.putExtra("imageId", user.getImageFile());
                startActivity(intent);
                             Log.d("VISUAL: ", user.getLastName());
 
