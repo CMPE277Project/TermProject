@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">SkiBuddy</string>
+    <string name="appId">719503558183833</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="toolbar_menu">Menu</string>
+    <string name="title_activity_second">secondActivity</string>
+    <string name="users_FirstName">First Name: </string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="tab1">Home</string>
+    <string name="tab2">Events</string>
+    <string name="tab3">Invitations</string>
+    <string name="textViewTitle">Title</string>
+
+    <string-array name="drawer_items">
+        <item>Create Event</item>
+        <item>Invitations</item>
+        <item>Records</item>
+        <item>Logout</item>
+    </string-array>
+    <string name="title_activity_event">EventActivity</string>
+    <string name="title_activity_view_events">viewEvents</string>
+    <string name="title_activity_event_informations">EventInformations</string>
+    <string name="title_activity_sessions">Sessions</string>
+</resources>
