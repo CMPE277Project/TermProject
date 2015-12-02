@@ -2,6 +2,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="edu.sjsu.cmpe277.termproject.Sessions">
+
+    <item
+        android:id="@+id/homeMenu2"
+        android:title="home"
+        android:icon="@drawable/ic_home_button"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:title="New"
+        android:id="@+id/newMenu2"
+        android:icon="@drawable/ic_open_new"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom" />
+
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

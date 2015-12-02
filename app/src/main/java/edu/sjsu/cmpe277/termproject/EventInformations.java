@@ -12,6 +12,7 @@ public class EventInformations extends AppCompatActivity implements View.OnClick
 
     private Button button;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

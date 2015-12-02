@@ -99,9 +99,19 @@ public class CreateEvent extends AppCompatActivity implements View.OnClickListen
 
     {
         TextView textView;
+        int hour;
+        int min;
+
+        public TimePickerFragment() {}
+
 
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+            hour = hourOfDay;
+            min = minute;
+
+            textView.setText(String.valueOf(hour) + String.valueOf(min));
 
         }
 
@@ -112,7 +122,7 @@ public class CreateEvent extends AppCompatActivity implements View.OnClickListen
             final Calendar c = Calendar.getInstance();
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
-
+            int seconds = c.get(Calendar.SECOND);
             // Create a new instance of TimePickerDialog and return it
             return new TimePickerDialog(getActivity(), this, hour, minute,
                     DateFormat.is24HourFormat(getActivity()));

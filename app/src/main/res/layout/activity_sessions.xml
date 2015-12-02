@@ -4,6 +4,7 @@
     tools:context="edu.sjsu.cmpe277.termproject.Sessions">
 
     <include
+        android:id="@+id/sessionToolBar"
         layout="@layout/toolbar" />
 
 
