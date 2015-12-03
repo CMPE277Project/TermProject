@@ -8,14 +8,21 @@
         layout="@layout/toolbar" />
 
     
-    <LinearLayout
-        android:orientation="horizontal"
-        android:id="@+id/map_fragment"
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:id="@+id/map_fragment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_below="@+id/sessionToolBar" -->
+	<!--/>-->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/sessionToolBar" 
-	/>
+        android:layout_below="@+id/sessionToolBar" />
+
 
 
 </RelativeLayout>
