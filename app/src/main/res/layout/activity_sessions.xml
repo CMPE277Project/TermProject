@@ -7,6 +7,15 @@
         android:id="@+id/sessionToolBar"
         layout="@layout/toolbar" />
 
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/map_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sessionToolBar" 
+	/>
 
 
 </RelativeLayout>
