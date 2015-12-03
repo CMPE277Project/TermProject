@@ -32,7 +32,7 @@ public class HttpRequestUser extends AsyncTask<User, Void, String> {
     @Override
     protected String doInBackground(User... params) {
         try {
-            url = new URL("http://79.170.44.117/rajat-bansal.com/skiBuddy/userInfo.php");
+            url = new URL("");
             httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoOutput(true);
