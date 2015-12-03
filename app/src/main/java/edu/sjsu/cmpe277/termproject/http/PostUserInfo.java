@@ -5,17 +5,11 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-
 
 import edu.sjsu.cmpe277.termproject.models.User;
 
@@ -38,7 +32,7 @@ public class PostUserInfo extends AsyncTask<User, Void, String> {
 
 
         try{
-            URL url = new URL("http://79.170.44.117/rajat-bansal.com/skiBuddy/userInfo.php");
+            URL url = new URL("");
             httpsURLConnection = (HttpURLConnection)url.openConnection();
           //  httpsURLConnection.setDoInput(true);
 

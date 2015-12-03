@@ -49,7 +49,7 @@ public class Tab2 extends Fragment implements AdapterView.OnItemClickListener {
 //        startActivity(intent);
 //
 //    }
-private static final String baseURL = "http://79.170.44.117/rajat-bansal.com/skiBuddy/";
+private static final String baseURL = "";
     private ListView listView_;
     private Intent selectedEvent;
 
