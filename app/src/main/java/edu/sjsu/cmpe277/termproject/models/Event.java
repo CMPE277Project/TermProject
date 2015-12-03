@@ -13,7 +13,15 @@ public class Event {
     private String startTime;
     private String endTime;
     private User user;
+    private String eventId;
 
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
 
     public User getUser() {
         return user;
@@ -43,17 +51,19 @@ public class Event {
         return startTime;
     }
 
-    public void setStartTime(Date date) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        this.startTime =simpleDateFormat.format(date);
+    public void setStartTime(String startTime) {
+        //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        //simpleDateFormat.format(date);
+        this.startTime = startTime;
     }
 
     public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date date) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        this.endTime = simpleDateFormat.format(date);
+    public void setEndTime(String endTime) {
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+//        this.endTime = simpleDateFormat.format(date);
+        this.endTime = endTime;
     }
 }
