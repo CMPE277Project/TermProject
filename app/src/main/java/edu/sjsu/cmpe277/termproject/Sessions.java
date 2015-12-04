@@ -12,7 +12,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Sessions extends AppCompatActivity {
-
     //add for google part
     static final LatLng MyPoint = new LatLng(21 , 57);
     private GoogleMap googleMap;
@@ -22,12 +21,22 @@ public class Sessions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sessions);
 
+        System.out.println("@@@@@@@@@@@In Sessions onCreate@@@@@@@@@@@@@@");
+
         //add for google map
         try {
             if (googleMap == null) {
+                System.out.println("@@@@@@@@@@@googleMap is null@@@@@@@@@@@@@@");
+
                 googleMap = ((MapFragment) getFragmentManager().
                         findFragmentById(R.id.map)).getMap();
+
             }
+
+            // What if googleMap != null?
+
+            System.out.println("@@@@@@@@@@@googleMap is leaving if statement@@@@@@@@@@@@@@");
+
             googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
             Marker TP = googleMap.addMarker(new MarkerOptions().
                     position(MyPoint).title("MyPoint"));

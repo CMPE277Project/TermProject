@@ -19,7 +19,13 @@ public class EventInformations extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_event_informations);
         button = (Button)findViewById(R.id.startSession);
 
-        button.setOnClickListener(this);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EventInformations.this, Sessions.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
