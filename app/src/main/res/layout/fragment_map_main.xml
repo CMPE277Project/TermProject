@@ -13,4 +13,7 @@
         android:name="com.google.android.gms.maps.MapFragment"
         android:id="@+id/map_fragment"
         android:layout_gravity="center" />
+
 </FrameLayout>
+
+

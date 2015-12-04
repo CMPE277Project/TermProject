@@ -19,7 +19,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Session"
+        android:text="StartSession"
         android:id="@+id/startSession"
         android:layout_below="@id/toolbar2"
         android:layout_alignTop="@+id/textView"
