@@ -22,4 +22,11 @@ public class Tab3 extends Fragment {
         listView = (ListView)view.findViewById(R.id.listView3);
         return view;
     }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+
 }

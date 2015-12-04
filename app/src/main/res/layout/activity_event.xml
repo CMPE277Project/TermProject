@@ -7,31 +7,12 @@
         android:id="@+id/eventToolBar"
         layout="@layout/toolbar" />
 
-    <Button
-        android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_below="@id/eventToolBar"
-        android:text="Submit"
-        android:layout_alignParentRight="true"
-        />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/eventToolBar">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
     <TextView android:text="@string/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/titleEvent"
-        android:layout_below="@id/submitButton"
+        android:layout_below="@id/eventToolBar"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         />
@@ -50,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/titleEvent"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"
         android:text="Description"/>
 
@@ -63,40 +44,88 @@
         android:layout_marginLeft="45dp"
         android:hint="Enter description"/>
 
+
+    <Button
+        android:layout_below="@id/descriptionEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startDateButton"
+        android:layout_marginTop="40dp"
+        android:text="Start Date"
+        android:onClick="showDatePicker1"/>
+
     <TextView
         android:id="@+id/startDateEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/descriptionEvent"
-        android:layout_marginLeft="18dp"
-        android:text="StartDate"/>
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/startDateButton"
-        android:text="Start Date"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/StartTimeButton"
-        android:text="Start Time"
-        android:onClick="showTimePicker"/>
+        android:layout_below="@id/editDescriptionEvent"
+        android:layout_marginLeft="150dp"
+        android:text="StartDate"
+        android:layout_alignBaseline="@id/startDateButton"/>
 
    <Button
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:id="@+id/EndDateButton"
-       android:text="End Date"/>
+       android:text="EndDate"
+       android:layout_marginTop="10dp"
+       android:layout_below="@id/startDateButton"
+       android:onClick="showDatePicker"
+        />
 
-        </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startDateViewer"
+        android:layout_below="@id/startDateEvent"
+        android:hint="EndDate"
+        android:layout_alignBaseline="@id/EndDateButton"
+        android:layout_marginLeft="150dp"/>
 
-    </ScrollView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/StartTimeButton"
+        android:text="StartTime"
+        android:onClick="showTimePicker"
+        android:layout_below="@id/EndDateButton" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startTimeClicker"
+        android:layout_alignBaseline="@id/StartTimeButton"
+        android:layout_below="@id/startDateViewer"
+        android:hint="Start Time"
+        android:layout_marginLeft="150dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/endTimeButton"
+        android:text="EndTime"
+        android:onClick="showTimePicker1"
+        android:layout_below="@id/StartTimeButton"
+        android:layout_marginTop="20dp"
+         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startTimeClicker2"
+        android:layout_alignBaseline="@id/endTimeButton"
+        android:layout_below="@id/startTimeClicker"
+        android:hint="EndTime"
+        android:layout_marginLeft="150dp"/>
 
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        />
 
 
 </RelativeLayout>

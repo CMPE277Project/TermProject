@@ -18,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.sql.Date;
 import java.util.Calendar;
@@ -28,12 +29,26 @@ import edu.sjsu.cmpe277.termproject.models.Event;
 public class CreateEvent extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar toolbar;
-    private Button button;
-    private Button button2;
+    private Button button, button1, button2, button3, button4;
     private Intent intent;
-    private EditText text1, text2, text3, text4;
+    private EditText text1, text2;
 
-    private TextView textview;
+    //variables hold the start date and end time.
+    private TextView textview, textView2, textView3, textView4;
+
+    //start date
+    private int s_year, s_month, s_day;
+
+    //end date
+    private int  e_year, e_month, e_day;
+
+    //variable to hold current date and time
+    private Calendar startDate, endDate,  startTime, endTime;
+
+
+    static final int DATE_DAILOG_ID =0;
+    static final int DATE_DAILOG_NEXTID = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +60,48 @@ public class CreateEvent extends AppCompatActivity implements View.OnClickListen
         text1 = (EditText)findViewById(R.id.editTitleEvent);
         text2 = (EditText)findViewById(R.id.editDescriptionEvent);
         textview = (TextView)findViewById(R.id.startDateEvent);
+
+        //get current date
+        startDate = Calendar.getInstance();
+        s_day = startDate.get(Calendar.DAY_OF_MONTH);
+        s_month = startDate.get(Calendar.MONTH);
+        s_year = startDate.get(Calendar.YEAR);
+
+
+        endDate = Calendar.getInstance();
+        e_day = endDate.get(Calendar.DAY_OF_MONTH);
+        e_month = endDate.get(Calendar.MONTH);
+        e_month = endDate.get(Calendar.YEAR);
+
+        //get current time
+        startTime = Calendar.getInstance();
+        endTime = Calendar.getInstance();
+
+        //capture our view elements for the start date function
+        button = (Button)findViewById(R.id.startDateButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    showDialog(DATE_DAILOG_ID);
+            }
+        });
+
+        button1 = (Button)findViewById(R.id.EndDateButton);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(DATE_DAILOG_NEXTID);
+            }
+        });
+
+        //initalizing submit button...
+        button4 = (Button)findViewById(R.id.submitButton);
+        button4.setOnClickListener(this);
+
+
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,9 +129,7 @@ public class CreateEvent extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         Event event = new Event();
         event.setTitle(text1.toString());
-        event.setTitle(text2.toString());
-        event.setStartTime(Date.valueOf(text3.toString()));
-        event.setEndTime(Date.valueOf(text4.toString()));
+        event.setDescription(text2.toString());
 
         new HttpPostEvent().execute(event);
         Intent intent = new Intent(this, secondActivity.class);
@@ -83,47 +137,35 @@ public class CreateEvent extends AppCompatActivity implements View.OnClickListen
         finish();
     }
 
-    public void showTimePicker(View view) {
-
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "timePicker");
-    }
-
-    public void showDatePicker(View view) {
-        DialogFragment dateFragment = new DatePickerFragment();
-        dateFragment.show(getSupportFragmentManager(), "datePicker");
-    }
-
-
-    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener
-
-    {
-        TextView textView;
-
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        if(id == DATE_DAILOG_ID) {
+            return new DatePickerDialog(this, dateListener, s_year, s_month, s_day);
         }
-
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current time as the default values for the picker
-            final Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR_OF_DAY);
-            int minute = c.get(Calendar.MINUTE);
-
-            // Create a new instance of TimePickerDialog and return it
-            return new TimePickerDialog(getActivity(), this, hour, minute,
-                    DateFormat.is24HourFormat(getActivity()));
+        else if(id == DATE_DAILOG_NEXTID) {
+            return new DatePickerDialog(this, dateListener2, e_year, e_month, e_day);
         }
+        else
+            return null;
     }
 
-    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-
+    private DatePickerDialog.OnDateSetListener dateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            
+            s_day = dayOfMonth;
+            s_year = year;
+            s_month = monthOfYear+1;
+
+
+            Toast.makeText(CreateEvent.this, s_month+":"+s_day+":"+s_year,Toast.LENGTH_LONG ).show();
         }
-    }
+    };
+
+    private DatePickerDialog.OnDateSetListener dateListener2 = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+        }
+    };
+
 }
