@@ -1,16 +1,15 @@
 package edu.sjsu.cmpe277.termproject;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android4devs.slidingtab.SlidingTabLayout;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -23,19 +22,20 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.Arrays;
+import java.util.List;
 
 import edu.sjsu.cmpe277.termproject.Fragments.Tab1;
 import edu.sjsu.cmpe277.termproject.Fragments.ViewPageAdapter;
-import edu.sjsu.cmpe277.termproject.Fragments.profileFragment;
-import edu.sjsu.cmpe277.termproject.http.HttpRequestUser;
-import edu.sjsu.cmpe277.termproject.http.PostUserInfo;
-import edu.sjsu.cmpe277.termproject.interfaces.Communicator;
 import edu.sjsu.cmpe277.termproject.models.User;
-import com.android4devs.slidingtab.SlidingTabLayout;
 
 public class MainActivity extends AppCompatActivity /*implements Communicator*/ {
 
@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity /*implements Communicator*/ 
     private AccessTokenTracker accessTokenTracker;
     private ProfileTracker profileTracker;
 
+    public static ParseObject thisObject;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity /*implements Communicator*/ 
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         FaceBookSetup();
+
+
 
 //        viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager(), charSequenceTitles, charSequenceTitles.length);
 //        viewPager = (ViewPager)findViewById(R.id.pager);
@@ -160,14 +164,33 @@ public class MainActivity extends AppCompatActivity /*implements Communicator*/ 
                             user.setLastName(jsonObject.getString("last_name"));
                             user.setImageFile(jsonObject.getString("id"));
 
-                           new HttpRequestUser().execute(user);
+//                           final ParseObject testObject = new ParseObject("DavidObject");
+//                           testObject.put("key", "value");
+//                           testObject.saveInBackground();
+
+                           ParseQuery<ParseObject> query = ParseQuery.getQuery("DavidObject");
+                           query.findInBackground(new FindCallback<ParseObject>() {
+                               public void done(List<ParseObject> objects, ParseException e) {
+                                   if (e == null) {
+                                       String value = testObject
+                                   } else {
+
+                                   }
+                               }
+                           });
+
+
+
+
+
+                         //  new HttpRequestUser().execute(user);
 
 //                            user.setImageFile(jsonObject.getString("picture"));
                            intent = new Intent(MainActivity.this, secondActivity.class);
-               intent.putExtra("firstName", user.getFirstName());
-               intent.putExtra("lastName", user.getLastName());
-               intent.putExtra("imageId", user.getImageFile());
-               startActivity(intent);
+                            intent.putExtra("firstName", user.getFirstName());
+                            intent.putExtra("lastName", user.getLastName());
+                            intent.putExtra("imageId", user.getImageFile());
+                            startActivity(intent);
                             Log.d("VISUAL: ", user.getLastName());
 
                         }
